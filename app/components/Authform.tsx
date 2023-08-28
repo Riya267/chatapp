@@ -2,7 +2,8 @@
 
 import React, { useCallback, useState } from "react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
-import {Input} from "@/chat_app/components/Input";
+import { Input } from "@/chat_app/components/Input";
+import { Button } from "@/chat_app/components/Button";
 
 type AuthVariant = 'LOGIN' | 'REGISTER';
 
@@ -46,6 +47,11 @@ export default function AuthForm() {
                     {variant === 'REGISTER' && <Input id="name" label="Name" register={register} errors={errors} disabled={isLoading}/>}
                     <Input id="email" label="Email Address" type="email" register={register} errors={errors}/>
                     <Input id="password" label="Password" type="password" register={register} errors={errors}/>
+                    <div>
+                        <Button disabled={isLoading} fullWidth type="submit">
+                            {variant === 'LOGIN' ? 'Sign in' : 'Register'}
+                        </Button>
+                    </div>
                 </form>
                 <div className="flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500">
                     <div>
