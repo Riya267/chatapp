@@ -2,6 +2,7 @@
 
 import React, { useCallback, useState } from "react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
+import {Input} from "@/chat_app/components/Input";
 
 type AuthVariant = 'LOGIN' | 'REGISTER';
 
@@ -40,22 +41,18 @@ export default function AuthForm() {
     return (
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
             <div className="bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
+            <h1 className="text-center text-gray-500 font-bold text-xl pb-2">{variant === 'LOGIN'? 'SignIn' : 'Register'}</h1>
                 <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-                    {/* Form fields go here */}
+                    {variant === 'REGISTER' && <Input id="name" label="Name" register={register} errors={errors} disabled={isLoading}/>}
+                    <Input id="email" label="Email Address" type="email" register={register} errors={errors}/>
+                    <Input id="password" label="Password" type="password" register={register} errors={errors}/>
                 </form>
-                <div className="mt-6">
-                    <div className="relative">
-                        <div className="absolute inset-0 flex items-center">
-                            <div className="w-full border-t border-gray-300" />
-                        </div>
-                    </div>
-                </div>
                 <div className="flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500">
                     <div>
-                        {variant === 'LOGIN' ? 'New to the chatApp' : 'Already have an Account'}
+                        {variant === 'LOGIN' ? 'New to ChatApp' : 'Already have an Account'}
                     </div>
                     <div onClick={toggleVariant} className="underline cursor-pointer">
-                        {variant === 'LOGIN' ? 'Create an account' : 'Login'}
+                        {variant === 'LOGIN' ? 'Create an account' : 'SignIn'}
                     </div>
                 </div>
             </div>
