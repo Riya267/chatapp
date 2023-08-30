@@ -40,8 +40,8 @@ export default function AuthForm() {
     };
 
     return (
-        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-            <div className="bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
+        <div>
+            <div className="bg-white px-12 py-8 shadow rounded-lg sm:px-20">
             <h1 className="text-center text-gray-500 font-bold text-xl pb-2">{variant === 'LOGIN'? 'SignIn' : 'Register'}</h1>
                 <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                     {variant === 'REGISTER' && <Input id="name" label="Name" register={register} errors={errors} disabled={isLoading}/>}
